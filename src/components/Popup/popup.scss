@@ -85,7 +85,6 @@
 		margin-bottom: 20px;
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
 		overflow-y: scroll;
 	}
 	&__product {
@@ -115,6 +114,7 @@
 		flex-direction: column;
 		gap: 8px;
 		text-align: start;
+		margin-bottom: 10px;
 	}
 	&__title {
 		font-size: 15px;

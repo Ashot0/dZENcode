@@ -7,20 +7,22 @@
 			<p class="popup__message">{{ message }}</p>
 
 			<div class="popup__products">
-				<div
-					v-for="product in products"
-					:key="product.id"
-					class="popup__product"
-				>
+				<div v-for="product in products" class="popup__product">
 					<div
+						v-if="product != null"
 						:class="
 							product.isNew
 								? 'popup__is-free-dot popup__is-free-dot_free'
 								: 'popup__is-free-dot'
 						"
 					></div>
-					<img class="popup__image" :src="`${product.photo}`" alt="" />
-					<div class="popup__title-wrapper">
+					<img
+						v-if="product != null"
+						class="popup__image"
+						:src="`${product.photo}`"
+						alt=""
+					/>
+					<div v-if="product != null" class="popup__title-wrapper">
 						<div class="popup__title">{{ product.title }}</div>
 						<div class="popup__serial-number">{{ product.serialNumber }}</div>
 					</div>
@@ -82,10 +84,16 @@ const confirm = () => {
 
 const store = useStore();
 
+const order = computed(() => {
+	return store.getters['Orders/getOrderById'](props.item.id);
+});
+
 const products = computed(() => {
-	return props.item.products.map((id) =>
-		store.getters['Products/getProductById'](id)
-	);
+	return order.value
+		? order.value.products.map((productId) =>
+				store.getters['Products/getProductById'](productId)
+		  )
+		: [];
 });
 </script>
 
