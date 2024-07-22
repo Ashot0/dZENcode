@@ -1,0 +1,83 @@
+.left-menu {
+	background-color: #ffffffff;
+	width: 197px;
+	min-width: 197px;
+	height: 100vh;
+	box-shadow:
+		rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+		rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+	&__profile {
+		margin: 46px 0 0 41px;
+		position: relative;
+		width: 95px;
+		height: 95px;
+	}
+
+	&__profile-photo {
+		border-radius: 50%;
+		width: 95px;
+		height: 95px;
+		object-fit: cover;
+	}
+
+	&__profile-settings {
+		position: absolute;
+		display: block;
+		filter: drop-shadow(0 0 0.75rem rgba(17, 12, 46, 0.423));
+		padding: 13px;
+		height: 39.5px;
+		width: 39.5px;
+		border-radius: 50%;
+		bottom: -1px;
+		right: -7px;
+	}
+
+	&__profile-settings-img {
+		width: 13.5px;
+		height: 13.5px;
+		object-fit: cover;
+		padding: 0;
+	}
+
+	&__links {
+		padding-top: 60px;
+		padding-right: 20px;
+		font-size: 14px;
+		letter-spacing: 1px;
+		height: 278px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		text-transform: uppercase;
+	}
+
+	&__link {
+		font-weight: 700;
+		color: black;
+		position: relative;
+		cursor: pointer;
+		line-height: 1.8;
+		text-decoration: none;
+		&:after {
+			display: block;
+			position: absolute;
+
+			left: 0;
+			width: 0;
+			height: 3px;
+			background-color: #5c8e29ff;
+			content: "";
+			transition: width 0.3s ease-out;
+		}
+
+		&:hover:after {
+			width: 100%;
+		}
+	}
+	.active-link {
+		&:after {
+			width: 100%;
+		}
+	}
+}

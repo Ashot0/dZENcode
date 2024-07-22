@@ -1,0 +1,26 @@
+.products-title {
+	font-size: 28px;
+	margin: 5px 0 63px 0;
+	display: flex;
+	align-items: center;
+	&__title {
+		display: inline-block;
+		width: 252px;
+		font-weight: 700;
+	}
+
+	&__small-text {
+		font-size: 13px;
+		margin-right: 8px;
+	}
+	&__search-specification,
+	&__search-type {
+		border-radius: 3px;
+		height: 27px;
+		width: 17.3vw;
+		background-color: white;
+		margin-right: 2vw;
+		border: 1px solid gray;
+		font-weight: 700;
+	}
+}

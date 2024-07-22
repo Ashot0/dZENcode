@@ -1,0 +1,47 @@
+.header {
+	position: relative;
+	height: 73px;
+	width: 100vw;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: #ffffffff;
+	padding: 0 0 0 10vw;
+	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+	&__logo {
+		color: #7cb342ff;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		font-size: 13px;
+		gap: 1vw;
+		letter-spacing: 0.7px;
+	}
+
+	&__search {
+		padding-left: 14px;
+		font-size: 15px;
+		margin: 0 7.85vw;
+		width: 21.5vw;
+		height: 30px;
+		letter-spacing: 0.7px;
+		font-weight: 700;
+		border-radius: 5px;
+		background-color: #f0f3f5ff;
+		color: black;
+		box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 3px inset;
+	}
+
+	&__right-block {
+		position: relative;
+		left: 28.7vw;
+		width: 15vw;
+		height: 60px;
+	}
+
+	&__data {
+	}
+
+	&__counter {
+	}
+}

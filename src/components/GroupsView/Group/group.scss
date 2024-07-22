@@ -1,0 +1,72 @@
+.group {
+	display: flex;
+	height: 72.2px;
+	border-radius: 4px;
+	padding-left: 15px;
+	font-size: 20px;
+	border: 1px solid rgb(186, 186, 186);
+	color: #546e7aff;
+	align-items: center;
+	width: 465px;
+	position: relative;
+	margin: 5px;
+	&:hover {
+		box-shadow: 0px 0px 5px rgb(97, 97, 97);
+	}
+	&__menu-button {
+		padding: 10px;
+		border-radius: 50%;
+		border: 1px solid gray;
+		background-color: inherit;
+		margin: 0 20px;
+	}
+	&__menu-button-img {
+		object-fit: cover;
+		width: 20px;
+	}
+
+	&__products-num {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		&_num {
+			font-size: 22px;
+		}
+		&_text {
+			color: gray;
+			font-size: 14px;
+		}
+	}
+
+	&__date {
+		display: flex;
+		flex-direction: column;
+		margin: 0 72px 10px 30px;
+		gap: 2px;
+	}
+
+	&__date-top {
+		color: gray;
+		font-size: 12px;
+	}
+
+	&__date-bottom {
+		text-transform: capitalize;
+		font-size: 15px;
+	}
+	&__open {
+		visibility: hidden;
+		position: absolute;
+		height: 100%;
+		width: 43px;
+		right: 0;
+		background-color: #cfd8dcff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		img {
+			object-fit: cover;
+			height: 14px;
+		}
+	}
+}

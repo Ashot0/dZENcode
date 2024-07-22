@@ -1,0 +1,20 @@
+.products-list {
+	display: flex;
+	flex-direction: column;
+	width: 82vw;
+	height: 70vh;
+	overflow: scroll;
+}
+
+.products-enter-active,
+.products-leave-active {
+	transition:
+		transform 0.5s ease,
+		opacity 0.5s ease;
+}
+
+.products-enter,
+.products-leave-to {
+	transform: translateX(100%);
+	opacity: 0;
+}

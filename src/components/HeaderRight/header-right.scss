@@ -1,0 +1,16 @@
+.header-right-block {
+	&__top {
+		display: flex;
+		gap: 5px;
+	}
+	&__date {
+		color: #36454dff;
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 24px;
+	}
+	&__clock-icon {
+		height: 19px;
+		padding: 5px 10px 0 15px;
+	}
+}
