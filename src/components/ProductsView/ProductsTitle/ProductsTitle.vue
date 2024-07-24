@@ -37,7 +37,7 @@ interface Product {
 }
 
 export default {
-	setup(_, { emit }: SetupContext) {
+	setup(_: any, { emit }: SetupContext) {
 		const store = useStore();
 		const allProducts = computed<Product[]>(
 			() => store.getters['Products/allProducts']

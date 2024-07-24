@@ -85,7 +85,7 @@ export default {
 			required: true,
 		},
 	},
-	setup(props) {
+	setup(props: any) {
 		const date = new Date(props.product.date);
 		const formattedDate1 = format(date, 'dd / MM');
 		const formattedDate2 = format(date, 'dd / MMM / yyyy', { locale: ru });
