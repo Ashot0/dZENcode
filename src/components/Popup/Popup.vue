@@ -38,33 +38,28 @@
 		</div>
 	</div>
 </template>
-
-<script setup>
-import { ref, watch, defineProps, defineEmits, computed } from 'vue';
+<script setup lang="ts">
+import { ref, watch, defineProps, defineEmits, computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
 
-const props = defineProps({
-	message: {
-		type: String,
-		required: true,
-	},
-	item: {
-		type: Object,
-		required: true,
-	},
-	onConfirm: {
-		type: Function,
-		required: true,
-	},
-	isVisible: {
-		type: Boolean,
-		default: false,
-	},
-});
+interface Item {
+	id: number;
+}
 
-const emit = defineEmits(['update:isVisible']);
+interface Props {
+	message: string;
+	item: Item;
+	onConfirm: () => void;
+	isVisible?: boolean;
+}
 
-const isVisible = ref(props.isVisible);
+const props = defineProps<Props>();
+
+const emit = defineEmits<{
+	(e: 'update:isVisible', value: boolean): void;
+}>();
+
+const isVisible = ref(props.isVisible ?? false);
 
 watch(
 	() => props.isVisible,
@@ -84,7 +79,11 @@ const confirm = () => {
 
 const store = useStore();
 
-const order = computed(() => {
+interface Order {
+	products: number[];
+}
+
+const order = computed<Order | undefined>(() => {
 	return store.getters['Orders/getOrderById'](props.item.id);
 });
 

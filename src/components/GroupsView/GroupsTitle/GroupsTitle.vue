@@ -5,8 +5,8 @@
 	</div>
 </template>
 
-<script>
-import { computed, onMounted } from 'vue';
+<script lang="ts">
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 export default {
 	setup() {
@@ -20,4 +20,3 @@ export default {
 </script>
 
 <style lang="scss" src="./groups-title.scss" scoped />
-<!-- Groups -->

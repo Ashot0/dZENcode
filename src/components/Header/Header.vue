@@ -14,7 +14,7 @@
 	</header>
 </template>
 
-<script>
+<script lang="ts">
 import HeaderRight from '@/components/HeaderRight/HeaderRight.vue';
 export default {
 	components: { HeaderRight },

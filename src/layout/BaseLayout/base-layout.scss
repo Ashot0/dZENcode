@@ -1,0 +1,9 @@
+.base-layout {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background-color: #f0f3f5ff;
+	&__wrapper {
+		display: flex;
+	}
+}

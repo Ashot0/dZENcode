@@ -4,19 +4,23 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
+
+interface WebSocketData {
+	activeTabs: number;
+}
 
 export default {
 	setup() {
-		const activeTabs = ref(0);
-		let ws;
+		const activeTabs = ref<number>(0);
+		let ws: WebSocket | undefined;
 
 		const connectWebSocket = () => {
 			ws = new WebSocket('ws://localhost:8080');
 
-			ws.onmessage = (event) => {
-				const data = JSON.parse(event.data);
+			ws.onmessage = (event: MessageEvent) => {
+				const data: WebSocketData = JSON.parse(event.data);
 				activeTabs.value = data.activeTabs;
 			};
 

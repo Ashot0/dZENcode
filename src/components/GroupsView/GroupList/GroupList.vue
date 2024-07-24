@@ -16,11 +16,13 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 import Group from '@/components/GroupsView/Group/Group.vue';
 import GroupProductList from '@/components/GroupsView/GroupProductList/GroupProductList.vue';
+import { Store } from 'vuex';
+import { RootState } from '@/store/index';
 
 export default {
 	components: {
@@ -28,15 +30,18 @@ export default {
 		GroupProductList,
 	},
 	setup() {
-		const store = useStore();
-		const allOrders = computed(() => store.getters['Orders/allOrders']);
-		const selectedGroup = ref(null);
-		const selectedIndex = ref(null);
+		const store = useStore<Store<RootState>>();
 
-		const selectGroup = (group, index) => {
+		const allOrders = computed(() => store.getters['Orders/allOrders']);
+
+		const selectedGroup = ref<any>(null);
+		const selectedIndex = ref<number | null>(null);
+
+		const selectGroup = (group: any, index: number) => {
 			selectedGroup.value = group;
 			selectedIndex.value = index;
 		};
+
 		const clearSelectedGroup = () => {
 			selectedGroup.value = null;
 			selectedIndex.value = null;

@@ -67,9 +67,10 @@
 	</aside>
 </template>
 
-<script>
-import { ref, onMounted, computed, onUnmounted } from 'vue';
-import { useRoute, useRouter, onBeforeRouteLeave } from 'vue-router';
+<script lang="ts">
+import { ref, computed } from 'vue';
+import { useRoute } from 'vue-router';
+
 export default {
 	setup() {
 		const route = useRoute();

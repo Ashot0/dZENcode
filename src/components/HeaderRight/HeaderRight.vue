@@ -5,28 +5,29 @@
 				{{ day }}
 				<ActiveTabs />
 			</div>
-			<strong>{{ dateNumber }}</strong
-			> <span style="text-transform: uppercase">{{ month }}</span
+			<strong>{{ dateNumber }}</strong>
+			<span style="text-transform: uppercase">{{ month }}</span
 			>,
 			<span>{{ year }}</span>
 			<img
 				class="header-right-block__clock-icon"
 				src="../../assets/icons/clock.png"
-				alt=""
+				alt="Clock icon"
 			/>
 			<span>{{ time }}</span>
 		</div>
 	</div>
 </template>
 
-<script>
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+<script lang="ts">
+import { ref, onMounted, onUnmounted, computed, Ref, ComputedRef } from 'vue';
 import ActiveTabs from '../ActiveTabs/ActiveTabs.vue';
+
 export default {
 	name: 'HeaderRight',
 	components: { ActiveTabs },
 	setup() {
-		const now = ref(new Date());
+		const now: Ref<Date> = ref(new Date());
 
 		const updateDateTime = () => {
 			now.value = new Date();
@@ -38,15 +39,15 @@ export default {
 			onUnmounted(() => clearInterval(interval));
 		});
 
-		const day = computed(() =>
+		const day: ComputedRef<string> = computed(() =>
 			now.value.toLocaleDateString('en-US', { weekday: 'long' })
 		);
-		const dateNumber = computed(() => now.value.getDate());
-		const month = computed(() =>
+		const dateNumber: ComputedRef<number> = computed(() => now.value.getDate());
+		const month: ComputedRef<string> = computed(() =>
 			now.value.toLocaleDateString('en-US', { month: 'long' })
 		);
-		const year = computed(() => now.value.getFullYear());
-		const time = computed(() =>
+		const year: ComputedRef<number> = computed(() => now.value.getFullYear());
+		const time: ComputedRef<string> = computed(() =>
 			now.value.toLocaleTimeString('en-US', {
 				hour: '2-digit',
 				minute: '2-digit',

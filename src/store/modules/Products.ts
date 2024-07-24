@@ -1,9 +1,111 @@
+import { Module } from 'vuex';
+import { RootState } from '../index';
 import Image from '../../assets/images/300.png';
-const Products = {
+
+export interface Price {
+	value: number;
+	symbol: string;
+	isDefault: number;
+}
+
+export interface Guarantee {
+	start: string;
+	end: string;
+}
+
+export interface Product {
+	id: number;
+	serialNumber: number;
+	isNew: number;
+	photo: string;
+	title: string;
+	type: string;
+	specification: string;
+	guarantee: Guarantee;
+	price: Price[];
+	order: number;
+	date: string;
+}
+
+export interface Form {
+	serialNumber: string;
+	isNew: number;
+	photo: string;
+	title: string;
+	type: string;
+	specification: string;
+	guarantee: Guarantee;
+	price: Price[];
+	order: number;
+	date: string;
+}
+
+export interface ProductsState {
+	products: Product[];
+	form: Form;
+}
+
+const Products: Module<ProductsState, RootState> = {
 	namespaced: true,
-	state() {
-		return {
-			products: [
+	state: () => ({
+		products: [],
+		form: {
+			serialNumber: '',
+			isNew: 0,
+			photo: '',
+			title: '',
+			type: '',
+			specification: '',
+			guarantee: {
+				start: '',
+				end: '',
+			},
+			price: [
+				{ value: 0, symbol: 'USD', isDefault: 0 },
+				{ value: 0, symbol: 'UAH', isDefault: 1 },
+			],
+			order: 0,
+			date: '',
+		},
+	}),
+	mutations: {
+		SET_PRODUCTS(state, products: Product[]) {
+			state.products = products;
+		},
+		ADD_PRODUCT(state, product: Product) {
+			state.products.push(product);
+		},
+		DELETE_PRODUCT(state, productId: number) {
+			state.products = state.products.filter(
+				(product) => product.id !== productId
+			);
+		},
+		SET_FORM(state, formData: Form) {
+			state.form = formData;
+		},
+	},
+	getters: {
+		allProducts: (state): Product[] => state.products,
+		getProductById:
+			(state) =>
+			(id: number): Product | undefined =>
+				state.products.find((product) => product.id === id),
+		getProductBySerialNumber:
+			(state) =>
+			(serialNumber: number): Product | undefined =>
+				state.products.find((product) => product.serialNumber === serialNumber),
+		getProductsByOrder:
+			(state) =>
+			(order: number): Product[] =>
+				state.products.filter((product) => product.order === order),
+		getProductsCountByOrder:
+			(state, getters) =>
+			(order: number): number =>
+				getters.getProductsByOrder(order).length,
+	},
+	actions: {
+		async loadProducts({ commit }) {
+			const mockProducts: Product[] = [
 				{
 					id: 1,
 					serialNumber: 1234,
@@ -555,36 +657,22 @@ const Products = {
 					order: 3,
 					date: '2017-06-29 12:09:33',
 				},
-			],
-		};
-	},
-	mutations: {
-		ADD_PRODUCT(state, product) {
-			state.products.push(product);
+			];
+			return new Promise<void>((resolve) => {
+				setTimeout(() => {
+					commit('SET_PRODUCTS', mockProducts);
+					resolve();
+				}, 1000);
+			});
 		},
-		DELETE_PRODUCT(state, productId) {
-			state.products = state.products.filter(
-				(product) => product.id !== productId
-			);
-		},
-	},
-	getters: {
-		allProducts: (state) => state.products,
-		getProductById: (state) => (id) =>
-			state.products.find((product) => product.id === id),
-		getProductBySerialNumber: (state) => (serialNumber) =>
-			state.products.find((product) => product.serialNumber === serialNumber),
-		getProductsByOrder: (state) => (order) =>
-			state.products.filter((product) => product.order === order),
-		getProductsCountByOrder: (state, getters) => (order) =>
-			getters.getProductsByOrder(order).length,
-	},
-	actions: {
-		addProduct({ commit }, product) {
+		addProduct({ commit }, product: Product) {
 			commit('ADD_PRODUCT', product);
 		},
-		deleteProduct({ commit }, productId) {
+		deleteProduct({ commit }, productId: number) {
 			commit('DELETE_PRODUCT', productId);
+		},
+		updateForm({ commit }, formData: Form) {
+			commit('SET_FORM', formData);
 		},
 	},
 };

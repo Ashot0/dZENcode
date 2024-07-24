@@ -5,8 +5,8 @@
 	</div>
 </template>
 
-<script>
-import { computed, onMounted } from 'vue';
+<script lang="ts">
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 export default {
 	setup() {

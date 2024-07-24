@@ -13,26 +13,31 @@
 	</transition-group>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, PropType } from 'vue';
 import Product from '@/components/ProductsView/Product/Product.vue';
 
-export default {
+export default defineComponent({
 	components: {
 		Product,
 	},
 	props: {
 		products: {
-			type: Array,
+			type: Array as PropType<any[]>,
 			required: true,
 		},
 	},
-	methods: {
-		handleBeforeLeave(el) {
+	setup() {
+		const handleBeforeLeave = (el: HTMLElement) => {
 			el.style.transform = 'translateX(100%)';
 			el.style.opacity = '0';
-		},
+		};
+
+		return {
+			handleBeforeLeave,
+		};
 	},
-};
+});
 </script>
 
 <style lang="scss" scoped src="./products-list.scss" />

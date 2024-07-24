@@ -35,20 +35,26 @@
 	</div>
 </template>
 
-<script>
-import { computed, ref } from 'vue';
+<script lang="ts">
+import { computed, ref, defineComponent } from 'vue';
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import { useStore } from 'vuex';
 import Popup from '../../../components/Popup/Popup.vue';
 
-export default {
+interface Order {
+	id: string;
+	date: string;
+	products: string[];
+}
+
+export default defineComponent({
 	components: {
 		Popup,
 	},
 	props: {
 		order: {
-			type: Object,
+			type: Object as () => Order,
 			required: true,
 		},
 	},
@@ -61,12 +67,13 @@ export default {
 				: 0;
 		});
 
-		const isPopupVisible = ref(false);
-
-		const popupMessage = ref('Вы уверены, что хотите удалить этот приход?');
+		const isPopupVisible = ref<boolean>(false);
+		const popupMessage = ref<string>(
+			'Вы уверены, что хотите удалить этот приход?'
+		);
 
 		const showPopup = () => {
-			if (productsCount.value != 0) {
+			if (productsCount.value !== 0) {
 				isPopupVisible.value = true;
 			} else {
 				removeOrder();
@@ -78,7 +85,7 @@ export default {
 			isPopupVisible.value = false;
 		};
 
-		const updateVisibility = (visibility) => {
+		const updateVisibility = (visibility: boolean) => {
 			isPopupVisible.value = visibility;
 		};
 
@@ -92,12 +99,12 @@ export default {
 		const formattedDate1 = format(date, 'dd / MM');
 		const formattedDate2 = format(date, 'dd / MMM / yyyy', { locale: ru });
 
-		const getProductById = (id) => {
+		const getProductById = (id: string) => {
 			return store.getters['Products/getProductById'](id);
 		};
 
-		const calculateTotalPrice = (priceIndex) => {
-			if (productsCount.value == 0) {
+		const calculateTotalPrice = (priceIndex: number) => {
+			if (productsCount.value === 0) {
 				return 0;
 			}
 			return props.order.products.reduce((total, id) => {
@@ -125,7 +132,7 @@ export default {
 			productsCount,
 		};
 	},
-};
+});
 </script>
 
 <style lang="scss" src="./order.scss" scoped></style>

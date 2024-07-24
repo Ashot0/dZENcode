@@ -23,20 +23,27 @@
 	</div>
 </template>
 
-<script>
-import { computed, onMounted, watch } from 'vue';
+<script lang="ts">
+import { computed } from 'vue';
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import { useStore } from 'vuex';
 
+interface GroupProps {
+	group: {
+		date: string;
+		id: number;
+	};
+}
+
 export default {
 	props: {
 		group: {
-			type: Object,
+			type: Object as () => GroupProps['group'],
 			required: true,
 		},
 	},
-	setup(props) {
+	setup(props: GroupProps) {
 		const store = useStore();
 		const date = new Date(props.group.date);
 		const formattedDate1 = format(date, 'dd / MM');

@@ -27,17 +27,24 @@
 	</div>
 </template>
 
-<script>
-import { computed, ref, watch, onMounted } from 'vue';
+<script lang="ts">
+import { computed, ref, watch, SetupContext } from 'vue';
 import { useStore } from 'vuex';
 
-export default {
-	setup(_, { emit }) {
-		const store = useStore();
-		const allProducts = computed(() => store.getters['Products/allProducts']);
+interface Product {
+	type: string;
+	specification: string;
+}
 
-		const selectedType = ref('');
-		const selectedSpecification = ref('');
+export default {
+	setup(_, { emit }: SetupContext) {
+		const store = useStore();
+		const allProducts = computed<Product[]>(
+			() => store.getters['Products/allProducts']
+		);
+
+		const selectedType = ref<string>('');
+		const selectedSpecification = ref<string>('');
 
 		const uniqueTypes = computed(() => {
 			const types = allProducts.value.map((product) => product.type);

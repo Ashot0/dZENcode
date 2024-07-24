@@ -30,19 +30,24 @@
 		</button>
 	</div>
 </template>
-
-<script>
-import { computed, onMounted } from 'vue';
+<script lang="ts">
+import { computed, onMounted, defineComponent } from 'vue';
 import { useStore } from 'vuex';
-export default {
+
+interface Product {
+	id: number;
+}
+
+export default defineComponent({
 	props: {
 		product: {
-			type: Object,
+			type: Object as () => Product,
 			required: true,
 		},
 	},
 	setup(props) {
 		const store = useStore();
+
 		const removeProduct = () => {
 			store.dispatch('Products/deleteProduct', props.product.id);
 		};
@@ -51,7 +56,7 @@ export default {
 			removeProduct,
 		};
 	},
-};
+});
 </script>
 
 <style lang="scss" src="./group-product.scss" scoped />

@@ -7,12 +7,17 @@
 		"build": "vue-cli-service build"
 	},
 	"dependencies": {
+		"@types/node": "^20.14.12",
+		"@types/vue": "^2.0.0",
+		"@vue/cli-plugin-typescript": "^5.0.8",
 		"date-fns": "^3.6.0",
+		"typescript": "^5.5.4",
 		"vue": "^3.2.13",
 		"vue-router": "^4.0.3",
 		"vuex": "^4.0.0"
 	},
 	"devDependencies": {
+		"@types/vue-router": "^2.0.0",
 		"@vue/cli-plugin-router": "~5.0.0",
 		"@vue/cli-plugin-vuex": "~5.0.0",
 		"@vue/cli-service": "~5.0.0",

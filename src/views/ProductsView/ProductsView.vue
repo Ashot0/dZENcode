@@ -1,33 +1,30 @@
 <template>
-	<div class="products-view">
-		<Header />
-		<div class="products-view__wrapper">
-			<LeftMenu />
-			<div class="page-wrapper">
-				<ProductsTitle @update:filteredProducts="updateFilteredProducts" />
-				<ProductsList :products="filteredProducts" />
-			</div>
-		</div>
+	<div class="page-wrapper">
+		<ProductsTitle @update:filteredProducts="updateFilteredProducts" />
+		<ProductsList :products="filteredProducts" />
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
-import LeftMenu from '../../components/LeftMenu/LeftMenu.vue';
-import Header from '../../components/Header/Header.vue';
 import ProductsTitle from '../../components/ProductsView/ProductsTitle/ProductsTitle.vue';
 import ProductsList from '../../components/ProductsView/ProductsList/ProductsList.vue';
+import { Store } from 'vuex';
+import { RootState } from '@/store/index';
 
 export default {
 	name: 'ProductsView',
-	components: { LeftMenu, Header, ProductsTitle, ProductsList },
+	components: { ProductsTitle, ProductsList },
 	setup() {
-		const store = useStore();
-		const allProducts = computed(() => store.getters['Products/allProducts']);
-		const filteredProducts = ref([]);
+		const store = useStore<RootState>();
 
-		const updateFilteredProducts = (products) => {
+		const allProducts = computed<Object[]>(
+			() => store.getters['Products/allProducts']
+		);
+		const filteredProducts = ref<Object[]>([]);
+
+		const updateFilteredProducts = (products: Object[]) => {
 			filteredProducts.value = products;
 		};
 

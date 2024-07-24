@@ -1,7 +1,16 @@
 <template>
-	<router-view />
+	<Layout>
+		<router-view />
+	</Layout>
 </template>
+<script lang="ts">
+import Layout from './layout/BaseLayout/BaseLayout.vue';
+
+export default {
+	components: {
+		Layout,
+	},
+};
+</script>
 
 <style src="./style/app.scss" lang="scss" />
-
-<!-- Gigabyte Technology X58-USB3 (Socket 1366) 6 X58-USB3 SN-12.3456789 -->

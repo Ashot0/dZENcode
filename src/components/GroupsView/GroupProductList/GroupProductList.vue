@@ -21,17 +21,21 @@
 	<div v-else></div>
 </template>
 
-<script>
-import { computed, watch } from 'vue';
+<script lang="ts">
+import { defineComponent, computed } from 'vue';
 import { useStore } from 'vuex';
 import GroupProduct from '@/components/GroupsView/GroupProduct/GroupProduct.vue';
 
-export default {
+interface SelectedGroup {
+	products?: number[];
+}
+
+export default defineComponent({
 	props: {
 		selectedGroup: {
-			type: Object,
+			type: Object as () => SelectedGroup,
 			required: false,
-			default: null,
+			default: () => ({}),
 		},
 	},
 	components: {
@@ -53,7 +57,7 @@ export default {
 			products,
 		};
 	},
-};
+});
 </script>
 
 <style lang="scss" src="./group-product-list.scss" scoped />

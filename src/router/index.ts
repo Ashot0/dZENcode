@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import OrderView from '../views/OrderView/OrderView.vue';
 import GroupsView from '../views/GroupsView/GroupsView.vue';
 import ProductsView from '../views/ProductsView/ProductsView.vue';
 import UsersView from '../views/UsersView/UsersView.vue';
 import SettingsView from '../views/SettingsView/SettingsView.vue';
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
 	{
 		path: '/',
 		name: 'order',

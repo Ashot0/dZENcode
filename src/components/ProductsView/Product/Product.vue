@@ -59,15 +59,29 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 import { computed } from 'vue';
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import { useStore } from 'vuex';
+import { PropType } from 'vue';
+
+interface Guarantee {
+	start: string;
+	end: string;
+}
+
+interface Product {
+	date: string;
+	guarantee: Guarantee;
+	order: number;
+	id: number;
+}
+
 export default {
 	props: {
 		product: {
-			type: Object,
+			type: Object as PropType<Product>,
 			required: true,
 		},
 	},
