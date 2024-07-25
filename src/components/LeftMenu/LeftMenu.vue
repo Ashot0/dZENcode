@@ -17,49 +17,51 @@
 		<nav class="left-menu__links">
 			<router-link
 				:class="
-					block === '/' ? 'left-menu__link active-link' : 'left-menu__link'
+					block === '/dZENcode-gitpages/'
+						? 'left-menu__link active-link'
+						: 'left-menu__link'
 				"
-				to="/"
+				to="/dZENcode-gitpages/"
 			>
 				Приход
 			</router-link>
 			<router-link
 				:class="
-					block === '/groups'
+					block === '/dZENcode-gitpages/groups'
 						? 'left-menu__link active-link'
 						: 'left-menu__link'
 				"
-				to="/groups"
+				to="/dZENcode-gitpages/groups"
 			>
 				Группы
 			</router-link>
 			<router-link
 				:class="
-					block === '/products'
+					block === '/dZENcode-gitpages/products'
 						? 'left-menu__link active-link'
 						: 'left-menu__link'
 				"
-				to="/products"
+				to="/dZENcode-gitpages/products"
 			>
 				Продукты
 			</router-link>
 			<router-link
 				:class="
-					block === '/users'
+					block === '/dZENcode-gitpages/users'
 						? 'left-menu__link active-link'
 						: 'left-menu__link '
 				"
-				to="/users"
+				to="/dZENcode-gitpages/users"
 			>
 				Пользователи
 			</router-link>
 			<router-link
 				:class="
-					block === '/settings'
+					block === '/dZENcode-gitpages/settings'
 						? 'left-menu__link active-link'
 						: 'left-menu__link'
 				"
-				to="/settings"
+				to="/dZENcode-gitpages/settings"
 			>
 				Настройки
 			</router-link>

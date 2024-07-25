@@ -7,30 +7,36 @@ import SettingsView from '../views/SettingsView/SettingsView.vue';
 
 const routes: Array<RouteRecordRaw> = [
 	{
-		path: '/',
+		path: '/dZENcode-gitpages/',
 		name: 'order',
 		component: OrderView,
 	},
 	{
-		path: '/groups',
+		path: '/dZENcode-gitpages/groups',
 		name: 'groups',
 		component: GroupsView,
 	},
 	{
-		path: '/products',
+		path: '/dZENcode-gitpages/products',
 		name: 'products',
 		component: ProductsView,
 	},
 	{
-		path: '/users',
+		path: '/dZENcode-gitpages/users',
 		name: 'users',
 		component: UsersView,
 	},
 	{
-		path: '/settings',
+		path: '/dZENcode-gitpages/settings',
 		name: 'settings',
 		component: SettingsView,
 	},
+	{
+		path: '/dZENcode-gitpages/:catchAll(.*)',
+		name: 'start',
+		component: OrderView,
+	},
+
 	{
 		path: '/:catchAll(.*)',
 		name: 'start',
