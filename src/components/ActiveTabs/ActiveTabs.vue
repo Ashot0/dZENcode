@@ -6,11 +6,7 @@
 
 <script lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-
-interface WebSocketData {
-	activeTabs: number;
-}
-
+import { WebSocketData } from './activeTabs';
 export default {
 	setup() {
 		const activeTabs = ref<number>(0);

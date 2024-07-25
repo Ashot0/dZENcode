@@ -31,10 +31,7 @@
 import { computed, ref, watch, SetupContext } from 'vue';
 import { useStore } from 'vuex';
 
-interface Product {
-	type: string;
-	specification: string;
-}
+import { Product } from '@/types/products';
 
 export default {
 	setup(_: any, { emit }: SetupContext) {

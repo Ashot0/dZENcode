@@ -41,18 +41,8 @@
 <script setup lang="ts">
 import { ref, watch, defineProps, defineEmits, computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
-
-interface Item {
-	id: number;
-}
-
-interface Props {
-	message: string;
-	item: Item;
-	onConfirm: () => void;
-	isVisible?: boolean;
-}
-
+import { Props } from '@/components/Popup/popup';
+import { Order } from '@/types/order';
 const props = defineProps<Props>();
 
 const emit = defineEmits<{
@@ -78,10 +68,6 @@ const confirm = () => {
 };
 
 const store = useStore();
-
-interface Order {
-	products: number[];
-}
 
 const order = computed<Order | undefined>(() => {
 	return store.getters['Orders/getOrderById'](props.item.id);

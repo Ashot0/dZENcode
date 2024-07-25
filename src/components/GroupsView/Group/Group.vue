@@ -28,14 +28,7 @@ import { computed } from 'vue';
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import { useStore } from 'vuex';
-
-interface GroupProps {
-	group: {
-		date: string;
-		id: number;
-	};
-}
-
+import { GroupProps } from './group';
 export default {
 	props: {
 		group: {

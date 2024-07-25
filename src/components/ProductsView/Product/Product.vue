@@ -65,18 +65,7 @@ import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import { useStore } from 'vuex';
 import { PropType } from 'vue';
-
-interface Guarantee {
-	start: string;
-	end: string;
-}
-
-interface Product {
-	date: string;
-	guarantee: Guarantee;
-	order: number;
-	id: number;
-}
+import { Product } from '@/types/products';
 
 export default {
 	props: {

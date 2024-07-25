@@ -33,11 +33,7 @@
 <script lang="ts">
 import { computed, onMounted, defineComponent } from 'vue';
 import { useStore } from 'vuex';
-
-interface Product {
-	id: number;
-}
-
+import { Product } from '@/types/products';
 export default defineComponent({
 	props: {
 		product: {

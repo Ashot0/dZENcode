@@ -25,11 +25,7 @@
 import { defineComponent, computed } from 'vue';
 import { useStore } from 'vuex';
 import GroupProduct from '@/components/GroupsView/GroupProduct/GroupProduct.vue';
-
-interface SelectedGroup {
-	products?: number[];
-}
-
+import { Order as SelectedGroup } from '@/types/order';
 export default defineComponent({
 	props: {
 		selectedGroup: {

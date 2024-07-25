@@ -41,13 +41,7 @@ import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import { useStore } from 'vuex';
 import Popup from '../../../components/Popup/Popup.vue';
-
-interface Order {
-	id: string;
-	date: string;
-	products: string[];
-}
-
+import { Order } from '../../../types/order';
 export default defineComponent({
 	components: {
 		Popup,
